@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ title }}</title>
+       
+        {{#if styles }}
+            {{#each styles}}
+                <link rel="stylesheet" href="/css/{{ this }}">
+            {{/each}}
+        {{/if}}
+      
+    </head>
+    <body>
+    
+
