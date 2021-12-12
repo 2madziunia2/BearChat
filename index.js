@@ -14,24 +14,30 @@ app.get('/',  function(req,res){
     res.render('home',{
         title: " Chat - Node.js",
         styles:[
+            "bootstrap.css",
             "style.css",
             "style2.css"
+            
         ],
         scripts:[
-            "socket.io.js",
             "jquery.js",
+            "handlebars.js",
+            "socket.io.js",
             "chat.js",
+        ],
+        pictures:[
+            "1.jpg",
+            "2.jpg",
+            "3.png"
         ]
     });
 });
-io.on('connection', function(socket){
-    console.log("user conntected");
-});
-io.on('disconnection', function(socket){
-    console.log("disconecct");
-});
+// io.on('connection', function(socket){
+//     console.log("user conntected");
+// });
 
-server.listen(process.env.PORT ||8080, function(){
+
+server.listen(process.env.PORT || 8080, function(){
     console.log("uruchominy");
 });
 chatS(io);

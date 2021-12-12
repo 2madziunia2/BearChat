@@ -1,14 +1,104 @@
-<form id="home-page" action="#">
-    <div class="form-group row">
-        <label  for="login">Podaj swoją nazwę</label>
+<section id="allPage">
+
+    <form id="home-page" action="#">
+            <script>
+               async function asyncFunc(img){
+                   
+                    console.log(img.src);
+                   img.src=img.src;
+                   console.log(img.src)
+                }
+</script>
+        <div>
+            <label  for="login">Podaj swoją nazwę</label>
+              <script>
+                function change(img){
+                      img.value =img.src;
+                      document.getElementById("wybrany").value=img.value;
+                  }
+              </script>
+                <input id="login" class="form-control" type="text" >
+          {{#each pictures}} 
+                 <img id="wybrany" onclick="change(this)" src="/images/avatars/{{this}}" class="avatar1" >
+         {{/each}}
+
+         
+             
+               <!--   <select id="chooseImage">
+                <div class="avatar2"  onclick='value="images/avatars/1.jpg"'><img  class="avatar1" src="images/avatars/1.jpg"></div>
+                 <img  class="avatar2" src="images/avatars/2.jpg" onclick='value="images/avatars/2.jpg"'>
+                  <img  class="avatar2" src="images/avatars/3.png"> -->
+                <!--  <input  class="avatar1" type="image" value="images/avatars/2.jpg" src="images/avatars/2.jpg">
+                 </select> 
+             <button type="button" class="avatar-button"  onclick='value="images/avatars/1.jpg"'><img class="avatar1" src="images/avatars/1.jpg"></button>
+                <button type="button" class="avatar-button" onclick='value="images/avatars/2.jpg"'><img class="avatar1" src="images/avatars/2.jpg"></button>
+                <button type="button" class="avatar-button" onclick='value="images/avatars/3.png"'><img class="avatar1" src="images/avatars/3.png"></button>
+              <select id="chooseImage">
+                    
+                <option class="avatar1" id="avatar" src="images/avatars/1.jpg" value="images/avatars/1.jpg" ></option>
+                <option class="avatar1" id="avatar2" src="images/avatars/2.jpg" value="images/avatars/2.jpg">bb</option>
+                <option class="avatar1" id="avatar3" src="images/avatars/3.png" value="images/avatars/3.png">cc</option>
+                </select> -->
+                
+                <button id="sub">Dołącz</button>
+                
         
-            <input id="login" class="form-control" type="text">
-       
-        
-            <button>Dołącz</button>
-      
-    </div>
-</form>
-<form id="chat-room">
-<h1> witaj na czacie {{ login }}</h1>
-</form>
+        </div>
+    </form>
+    
+    <form id="chat-room" action="#">
+        <h1> witaj na czacie</h1>
+        <div class="row">
+            <div class="col-sm-3">Użytkonicy
+                <div id="status-window">
+                        <ul class="list-unstyled">
+                            <li class="p-2 border-bottom">
+                                    <div class="d-flex flex-row">
+                                        <script  type="text/x-handlebars-template" id="activity-window">
+                                                <div>
+                                                    <img src=\{{ avatar }} alt="avatar" class="avatar1">
+                                                    <p class="fw-bold mb-0">\{{ login }}</p>
+                                                    <p class="small">\{{ time }}</p>
+                                                    <p class="small">\{{ status }}</p>
+                                                </div>
+                                                
+                                        </script>
+                                    </div>   
+                            </li> 
+                        </ul>
+                    
+
+                   
+                </div>
+              
+            </div>
+            <div class="col-sm-9">
+                <div class="col-md-6 col-lg-7 col-xl-8"></div>
+               
+                    <div id="chat-window" >
+                   
+                        <div class="pt-3 pe-3" data-mdb-perfect-scrollbar="true" style="position: relative;">
+                            <div class="d-flex flex-row justify-content-start"></div>
+                                <script  type="text/x-handlebars-template" id="messages-window">
+                                    <div>
+                                        <img class="avatar1" src="\{{ avatar }}">
+                                        <span class="fw-bold">\{{ login }}</span><span class="small me-3 mb-3 rounded-3 text-muted" class="time-line"> \{{ time }}</span>
+                                        <p id="message-content"  class="small p-2 ms-3 mb-1 rounded-3", "message-line" >\{{ message }}</p>
+                                        
+                                    </div>
+                                </script>
+                            </div>
+                        </div>
+                   
+                        <div >
+                            <textarea id="message-text" placeholder="Twoja wiadomość..." class="form-control form-control-lg"></textarea>
+                      
+                            <button class="button-send">Wyslij</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</section>
