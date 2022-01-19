@@ -5,24 +5,27 @@ function init(io){
         socket.on("join",function(login,avatar){
             socket.login = login;
             socket.avatar = avatar;
-            //emit to all users
+         
             io.emit("status",{
                 status:"dołaczył / dołączyła do chatu",
                 time:Date.now(),
                 avatar: socket.avatar,
                 login:login
+                
             });
+           
             
         });
         socket.on("disconnect", function(){
-       
-                io.emit("status",{
+             if(socket.login != undefined)
+               { io.emit("status",{
                     status:"opuścił / opuściła czat ",
                     time:Date.now(),
                     avatar: socket.avatar,
                     login:socket.login
+               
                 });
-
+            }
         });       
         socket.on("message", function(msg){
            
@@ -34,8 +37,6 @@ function init(io){
                 
                
             });
-        
-           console.log("avatar to "+socket.avatar);
            
          });
        

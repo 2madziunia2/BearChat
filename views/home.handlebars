@@ -1,62 +1,43 @@
 <section id="allPage">
-
+    <img id="logo" src="/images/logos/bearchat2.png">
     <form id="home-page" action="#">
-            <script>
-               async function asyncFunc(img){
-                   
-                    console.log(img.src);
-                   img.src=img.src;
-                   console.log(img.src)
-                }
-</script>
         <div>
-            <label  for="login">Podaj swoją nazwę</label>
+            
               <script>
+                
                 function change(img){
-                      img.value =img.src;
-                      document.getElementById("wybrany").value=img.value;
+                    img.value =img.src;
+                    document.getElementById("wybrany").value=img.value;
+                    img.style.outline="solid 5px #59342B";
+                    img.style.pointerEvents="none";
                   }
               </script>
-                <input id="login" class="form-control" type="text" >
-          {{#each pictures}} 
-                 <img id="wybrany" onclick="change(this)" src="/images/avatars/{{this}}" class="avatar1" >
-         {{/each}}
 
-         
-             
-               <!--   <select id="chooseImage">
-                <div class="avatar2"  onclick='value="images/avatars/1.jpg"'><img  class="avatar1" src="images/avatars/1.jpg"></div>
-                 <img  class="avatar2" src="images/avatars/2.jpg" onclick='value="images/avatars/2.jpg"'>
-                  <img  class="avatar2" src="images/avatars/3.png"> -->
-                <!--  <input  class="avatar1" type="image" value="images/avatars/2.jpg" src="images/avatars/2.jpg">
-                 </select> 
-             <button type="button" class="avatar-button"  onclick='value="images/avatars/1.jpg"'><img class="avatar1" src="images/avatars/1.jpg"></button>
-                <button type="button" class="avatar-button" onclick='value="images/avatars/2.jpg"'><img class="avatar1" src="images/avatars/2.jpg"></button>
-                <button type="button" class="avatar-button" onclick='value="images/avatars/3.png"'><img class="avatar1" src="images/avatars/3.png"></button>
-              <select id="chooseImage">
-                    
-                <option class="avatar1" id="avatar" src="images/avatars/1.jpg" value="images/avatars/1.jpg" ></option>
-                <option class="avatar1" id="avatar2" src="images/avatars/2.jpg" value="images/avatars/2.jpg">bb</option>
-                <option class="avatar1" id="avatar3" src="images/avatars/3.png" value="images/avatars/3.png">cc</option>
-                </select> -->
-                
+            <div id="loginPan">
+                <h2>Witaj na czacie!</h2>
+                <h3>Wybierz Misio-avatar & podaj Misio-Nazwę</h3>
+                 {{#each pictures}} 
+                    <img id="wybrany"  onclick="change(this)" src="/images/avatars/{{this}}" class="avatar2">
+                {{/each}}
+               <input id="login" class="form-control" type="text" >
                 <button id="sub">Dołącz</button>
-                
+                <p id="empty"></p>
+            </div>  
         
         </div>
     </form>
     
     <form id="chat-room" action="#">
-        <h1> witaj na czacie</h1>
+      
         <div class="row">
-            <div class="col-sm-3">Użytkonicy
+            <div class="col-sm-3"><p id="napisUzytkownicy">Statusy</p>
                 <div id="status-window">
                         <ul class="list-unstyled">
                             <li class="p-2 border-bottom">
                                     <div class="d-flex flex-row">
                                         <script  type="text/x-handlebars-template" id="activity-window">
-                                                <div>
-                                                    <img src=\{{ avatar }} alt="avatar" class="avatar1">
+                                                <div id="activ">
+                                                    <img src="\{{ avatar }}" alt="avatar" class="avatar1">
                                                     <p class="fw-bold mb-0">\{{ login }}</p>
                                                     <p class="small">\{{ time }}</p>
                                                     <p class="small">\{{ status }}</p>

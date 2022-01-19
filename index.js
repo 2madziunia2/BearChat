@@ -26,9 +26,9 @@ app.get('/',  function(req,res){
             "chat.js",
         ],
         pictures:[
-            "1.jpg",
-            "2.jpg",
-            "3.png"
+            "mis1.png",
+            "mis2.png",
+            "mis3.png"
         ]
     });
 });

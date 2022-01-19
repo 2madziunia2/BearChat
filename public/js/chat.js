@@ -1,6 +1,7 @@
 (function(){
    
    var socket = io.connect();
+   var isJoined = false;
    var homePage=$("#home-page"),
    loginObcjet=$("#login"),
    avatarObject=$("#wybrany"),
@@ -8,27 +9,30 @@
    chatWindow=$("#chat-window"),
    statusWindow=$("#status-window"),
    messageObject=$("#message-text"),
+   emptyValue=$("#empty"),
    messagesWindow = Handlebars.compile( $("#messages-window").html() );
    activityWindow = Handlebars.compile( $("#activity-window").html() );
   
    homePage.on("submit", function(e){
+      e.preventDefault();
+
       var login = $.trim( loginObcjet.val() );
       var avatar = $.trim( avatarObject.val() );
 
-
       if(login===""){
-         alert("nie podano nazwy");
-      
-         //loginObcjet.addClass("empty");
+         var text = "Misiu podaj Login";
+         emptyValue.empty().append(text);
+     
       }
       else if(avatar===""){
-         alert("nie wybrano avatara");
+         var text = "Misiu wybierz avatar";
+         emptyValue.empty().append(text);
       } else{
-         //loginObcjet.removeClass("invalid");
+        
          socket.emit("join", login, avatar);
-         
          homePage.hide();
          chatPage.show();
+         isJoined = true;
       }
      
       
@@ -37,6 +41,7 @@
 
    chatPage.on("submit", function(e){
       e.preventDefault();
+      
       var message = $.trim(messageObject.val());
       
       if(message!==""){
@@ -47,6 +52,7 @@
      
    });
    socket.on("status",function(data){
+      if(!isJoined) return;
       var activityInfo = activityWindow({
          avatar: data.avatar,
          time: formatDate(data.time),
@@ -54,9 +60,10 @@
          status: data.status
       });
       statusWindow.append(activityInfo);
-
+      scrollWindow();
    });
    socket.on("message",function(data){
+      if(!isJoined) return;
             var messageInfo = messagesWindow({
                avatar: data.avatar,
                time: formatDate(data.time),
@@ -65,7 +72,12 @@
             });
            
         chatWindow.append(messageInfo);
+        scrollWindow();
    });
+   function scrollWindow(){
+      chatWindow.scrollTop(chatWindow.prop("scrollHeight"));
+      statusWindow.scrollTop(statusWindow.prop("scrollHeight"));
+   }
    function formatDate(time) {
 
       var date = new Date(time),
