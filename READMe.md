@@ -22,7 +22,7 @@ $ cd npm install
 $ nodemone start
 
 ```
-you can conntec as a client on localhost:8080
+you can connect as a client on localhost:8080
 
 ## Screenshots
 ![screenshot11](./public/images/screenshots/screenshot1.png)
