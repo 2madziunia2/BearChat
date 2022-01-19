@@ -30,5 +30,6 @@ you can connect as a client on localhost:8080
 ![screenshot11](./public/images/screenshots/screenshot3.png)
 ![screenshot11](./public/images/screenshots/screenshot4.png)
 
-
+## Graphics
+logo and teddy bear graphics made by me in a vector graphics program
 
