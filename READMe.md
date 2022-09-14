@@ -19,7 +19,7 @@ To run this project, install it localy using npm:
 ```
 $ cd ../BearChat-main
 $ cd npm install
-$ nodemone start
+$ nodemon index
 
 ```
 you can connect as a client on localhost:8080
